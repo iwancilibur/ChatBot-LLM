@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting Knowledge - Universal Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --accent-color: #8bc34a;
+            --text-light: #e8f5e9;
+            --text-dark: #263238;
+            --bg-gradient: linear-gradient(135deg, #1a2e1a 0%, #2e7d32 100%);
+            --chat-bg: rgba(255, 255, 255, 0.95);
+            --user-bubble: #388e3c;
+            --bot-bubble: #f1f8e9;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --timestamp-color: #757575;
+            --error-color: #d32f2f;
+            --warning-color: #ffa000;
+            --info-color: #1976d2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .setting-container {
+            width: 100%;
+            max-width: 700px;
+            min-width: 0;
+            margin: 20px auto;
+            background: var(--chat-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            padding: 30px;
+        }
+
+        .setting-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .setting-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .setting-title i {
+            font-size: 1.5rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            background: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .info {
+            color: var(--text-dark);
+            background: rgba(76, 175, 80, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .info b {
+            color: var(--primary-dark);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 120px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        button[type="submit"] {
+            padding: 12px 24px;
+            border-radius: 25px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button[type="submit"] i {
+            font-size: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .setting-container {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            .setting-title {
+                font-size: 1.5rem;
+            }
+
+            textarea, input[type="text"] {
+                min-height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .setting-container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .setting-title {
+                font-size: 1.3rem;
+            }
+
+            .info {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+
+            textarea, input[type="text"] {
+                min-height: 80px;
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+
+            button[type="submit"] {
+                padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="setting-container">
+        <div class="setting-header">
+            <h1 class="setting-title">
+                <i class="fas fa-cog"></i>
+                Setting Knowledge
+            </h1>
+            <a href="{{ url_for('chat') }}" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Kembali ke Chat
+            </a>
+        </div>
+
+        <div class="info">
+            Atur <b>Base Knowledge</b> (prompting) dan <b>Link Knowledge</b> (satu per baris).<br>
+            Chatbot akan mengikuti rule yang Anda tentukan di sini.
+        </div>
+
+        <form method="post">
+            <label for="base_knowledge">Base Knowledge (Prompting)</label>
+            <textarea name="base_knowledge" id="base_knowledge" rows="6" placeholder="Contoh: Kamu adalah asisten dokter...">{{ knowledge.base_knowledge }}</textarea>
+            
+            <label for="link_knowledge">Link Knowledge (satu per baris)</label>
+            <textarea name="link_knowledge" id="link_knowledge" rows="4" placeholder="https://contoh.com/artikel1&#10;https://contoh.com/artikel2">{% for l in knowledge.link_knowledge %}{{ l }}{% if not loop.last %}&#10;{% endif %}{% endfor %}</textarea>
+            
+            <button type="submit">
+                <i class="fas fa-save"></i>
+                Simpan
+            </button>
+        </form>
+        <footer style="text-align: center; padding: 15px 10px; font-size: 0.85rem; color: #777;">
+            &copy; 2025 <a href="https://iwancilibur.my.id" target="_blank" style="color: var(--primary-color); text-decoration: none;">Iwan Cilibur</a>. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Apply dark mode if enabled
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.body.classList.contains('dark-mode')) {
+                // Update colors for dark mode
+                document.documentElement.style.setProperty('--chat-bg', '#263238');
+                document.documentElement.style.setProperty('--text-dark', '#e0e0e0');
+                document.documentElement.style.setProperty('--bot-bubble', '#37474f');
+                
+                // Update input fields for dark mode
+                const inputs = document.querySelectorAll('textarea, input[type="text"]');
+                inputs.forEach(input => {
+                    input.style.backgroundColor = '#37474f';
+                    input.style.color = '#e0e0e0';
+                    input.style.borderColor = '#455a64';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
